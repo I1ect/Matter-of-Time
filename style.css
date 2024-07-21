@@ -1,4 +1,24 @@
 html {
   height: 100%;
   width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
+}
+
+.buyGenerator {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  width: 80px;
+  height: 30px;
+  transition-duration: 0.4s;
+}
+
+.buyGenerator:hover {
+  background-color: white;
+  color: black;
 }
