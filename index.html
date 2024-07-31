@@ -12,22 +12,25 @@
 </head>
 
 <body>
-  Matter: <br>
-  Matter Per Second: <br>
+  Matter: <span id="matter">1</span> <br>
+  Matter Per Second: <span id="matterPerSecond">1</span><br>
   <hr>
-  <div class="generator" id="generator1">
-    Matter Generator 1: <span id="gen1Amount">1</span>
+  <div class="building" id="generator">
+    Matter Generator - Level <span id="generatorLevel">1</span>
      <button class="buyGenerator">Buy</button>
+    <span id = generatorCurrent> 0 </span> / <span id="generatorCost"> 0 </span>
   </div>
 
-  <div class="generator" id="generator1">
-    Matter Generator 2: <span id="gen2Amount">1</span>
-     <button class="buyGenerator">Buy</button>
+  <div class="building" id="booster">
+    Matter Booster - Level <span id="boosterLevel">1</span>
+     <button class="buyBooster">Buy</button>
+    <span id = boosterCurrent> 0 </span> / <span id="boosterCost"> 0 </span>
   </div>
 
-  <div class="generator" id="generator1">
-    Matter Generator 3: <span id="gen3Amount">1</span>
-     <button class="buyGenerator">Buy</button>
+  <div class="building" id="accelerator">
+    Matter Accelerator - Level <span id="acceleratorLevel">1</span>
+     <button class="buyAccelerator">Buy</button>
+    <span id = acceleratorCurrent> 0 </span> / <span id="acceleratorCost"> 0 </span>
   </div>
 
   <script src="script.js"></script>
