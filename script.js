@@ -44,29 +44,29 @@ const variablesDoc = {
 
 buttons.buyGenerator.addEventListener("click", () => {
   variables.generatorCurrent += variables.matter;
-  variables.generatorCurrent = Math.round(variables.generatorCurrent * 10) / 10;
+  variables.generatorCurrent = tenths(variables.generatorCurrent)
   variables.matter = 0;
   
   if (variables.generatorCurrent >= variables.generatorCost) {
     variables.generatorLevel++;
     variables.generatorCurrent = variables.generatorCurrent - variables.generatorCost;
-    variables.generatorCurrent = Math.round(variables.generatorCurrent * 10) / 10;
+    variables.generatorCurrent = tenths(variables.generatorCurrent);
     variables.generatorCost *= 2.3;
-    variables.generatorCost = Math.round(variables.generatorCost * 10) / 10;
+    variables.generatorCost = tenths(variables.generatorCost);
   }  
 })
 
 buttons.buyBooster.addEventListener("click", () => {
   variables.boosterCurrent += variables.matter;
-  variables.boosterCurrent = Math.round(variables.boosterCurrent * 10) / 10;
+  variables.boosterCurrent = tenths(variables.boosterCurrent);
   variables.matter = 0;
 
   if (variables.boosterCurrent >= variables.boosterCost) {
     variables.boosterLevel++;
     variables.boosterCurrent = variables.boosterCurrent - variables.boosterCost;
-    variables.boosterCurrent = Math.round(variables.boosterCurrent * 10) / 10;
+    variables.boosterCurrent = tenths(variables.boosterCurrent);
     variables.boosterCost *= 2.8;
-    variables.boosterCost = Math.round(variables.boosterCost * 10) / 10;
+    variables.boosterCost = tenths(variables.boosterCost);
     variables.boostPerSecond = (variables.boosterLevel - 1) / 10;
   }
 })
@@ -79,10 +79,11 @@ buttons.buyAccelerator.addEventListener("click", () => {
 
 function updateData() {
   // Updates Values
+  variables.matterPerSecond = variables.generatorLevel * (1 + variables.boostAccumulated);
+  variables.matterPerSecond = tenths(variables.matterPerSecond)
   addMatter(variables.matterPerSecond/10);
-  variables.matterPerSecond = variables.generatorLevel;
   variables.timerCurrent += 0.1;
-  variables.timerCurrent = Math.round(variables.timerCurrent * 10) / 10;
+  variables.timerCurrent = tenths(variables.timerCurrent);
   if (variables.timerCurrent >= variables.timerMax) {
     reset();
   }
@@ -101,13 +102,18 @@ function updateData() {
   variablesDoc.matterPerSecond.innerHTML = variables.matterPerSecond;
   variablesDoc.timerCurrent.innerHTML = variables.timerCurrent;
   variablesDoc.timerMax.innerHTML = variables.timerMax;
-  variablesDoc.boostPerSecond.innerHTML = variables.boostPerSecond;
+  variablesDoc.boostPerSecond.innerHTML = (variables.boostPerSecond * variables.matterPerSecond);
+  variablesDoc.boostPerSecond.innerHTML = Math.round(variablesDoc.boostPerSecond.innerHTML * 10) / 10;
 }
 
 function addMatter(value) {
   variables.boostAccumulated += variables.boostPerSecond / 10;
-  variables.matter += value * (1 + variables.boostAccumulated);
-  variables.matter = Math.round(variables.matter * 10) / 10
+  variables.matter += value;
+  variables.matter = tenths(variables.matter);
+}
+
+function tenths(value) {
+  return Math.round(value * 10) / 10;
 }
 
 function reset() {
