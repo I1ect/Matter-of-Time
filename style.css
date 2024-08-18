@@ -9,7 +9,7 @@ html {
   font-size: 24px;
 }
 
-.buyGenerator, .buyBooster, .buyAccelerator {
+#buyGenerator, #buyBooster, #buyAccelerator {
   background-color: black;
   border: 2px solid white;
   color: white;
@@ -18,7 +18,7 @@ html {
   transition-duration: 0.4s;
 }
 
-.buyGenerator:hover, .buyBooster:hover, .buyAccelerator:hover {
+#buyGenerator:hover, #buyBooster:hover, #buyAccelerator:hover {
   background-color: white;
   color: black;
 }
