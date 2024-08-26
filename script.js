@@ -14,12 +14,16 @@ const variables = {
   acceleratorLevel: 1,
   generatorCost: 15,
   generatorCurrent: 0,
-  boosterCost: 500,
+  boosterCost: 400,
   boosterCurrent: 0,
   acceleratorCost: 1000,
   acceleratorCurrent: 0,
   timerCurrent: 0,
   timerMax: 10,
+}
+
+const profileStats = {
+  maxMatter: 0,
 }
 
 const variablesDoc = {
@@ -40,6 +44,11 @@ const variablesDoc = {
   timerCurrent: document.querySelector('#timerCurrent'),
   timerMax: document.querySelector('#timerMax'),
   boostPerSecond: document.querySelector('#boostPerSecond'),
+
+  // Upgrades
+
+  // Stats
+  maxMatter: document.querySelector("#maxMatter"),
 }
 
 buttons.buyGenerator.addEventListener("click", () => {
@@ -51,7 +60,7 @@ buttons.buyGenerator.addEventListener("click", () => {
     variables.generatorLevel++;
     variables.generatorCurrent = variables.generatorCurrent - variables.generatorCost;
     variables.generatorCurrent = tenths(variables.generatorCurrent);
-    variables.generatorCost *= 2.3;
+    variables.generatorCost *= 1.6;
     variables.generatorCost = tenths(variables.generatorCost);
   }  
 })
@@ -65,7 +74,7 @@ buttons.buyBooster.addEventListener("click", () => {
     variables.boosterLevel++;
     variables.boosterCurrent = variables.boosterCurrent - variables.boosterCost;
     variables.boosterCurrent = tenths(variables.boosterCurrent);
-    variables.boosterCost *= 2.8;
+    variables.boosterCost *= 2.3;
     variables.boosterCost = tenths(variables.boosterCost);
     variables.boostPerSecond = (variables.boosterLevel - 1) / 10;
   }
@@ -87,6 +96,9 @@ function updateData() {
   if (variables.timerCurrent >= variables.timerMax) {
     reset();
   }
+  if (profileStats.maxMatter <= variables.matter) {
+    profileStats.maxMatter = variables.matter;
+  }
   
   // Updates Document
   variablesDoc.generatorLevel.innerHTML = variables.generatorLevel;
@@ -102,8 +114,9 @@ function updateData() {
   variablesDoc.matterPerSecond.innerHTML = variables.matterPerSecond;
   variablesDoc.timerCurrent.innerHTML = variables.timerCurrent;
   variablesDoc.timerMax.innerHTML = variables.timerMax;
-  variablesDoc.boostPerSecond.innerHTML = (variables.boostPerSecond * variables.matterPerSecond);
+  variablesDoc.boostPerSecond.innerHTML = (variables.boostPerSecond *     variables.matterPerSecond);
   variablesDoc.boostPerSecond.innerHTML = Math.round(variablesDoc.boostPerSecond.innerHTML * 10) / 10;
+  variablesDoc.maxMatter.innerHTML = profileStats.maxMatter;
 }
 
 function addMatter(value) {
