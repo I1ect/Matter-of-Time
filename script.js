@@ -1,7 +1,8 @@
 const buttons = {
   buyGenerator: document.querySelector("#buyGenerator"),
   buyBooster: document.querySelector("#buyBooster"),
-  buyAccelerator: document.querySelector("#buyAccelerator")
+  buyAccelerator: document.querySelector("#buyAccelerator"),
+  buyUpgrade1: document.querySelector("#upgrade1"),
 }
 
 const variables = {
@@ -20,6 +21,8 @@ const variables = {
   acceleratorCurrent: 0,
   timerCurrent: 0,
   timerMax: 10,
+  upgrade1Cost: 50,
+  upgrade1Multiplier: 0,
 }
 
 const profileStats = {
@@ -46,6 +49,8 @@ const variablesDoc = {
   boostPerSecond: document.querySelector('#boostPerSecond'),
 
   // Upgrades
+  upgrade1Multiplier: document.querySelector("#maxMatterMultiplier"),
+  upgrade1Cost: document.querySelector("#upgrade1Cost"),
 
   // Stats
   maxMatter: document.querySelector("#maxMatter"),
@@ -99,6 +104,7 @@ function updateData() {
   if (profileStats.maxMatter <= variables.matter) {
     profileStats.maxMatter = variables.matter;
   }
+  variables.upgrade1Multiplier = hundreths(1+Math.log10(Math.sqrt(profileStats.maxMatter)))
   
   // Updates Document
   variablesDoc.generatorLevel.innerHTML = variables.generatorLevel;
@@ -117,6 +123,8 @@ function updateData() {
   variablesDoc.boostPerSecond.innerHTML = (variables.boostPerSecond *     variables.matterPerSecond);
   variablesDoc.boostPerSecond.innerHTML = Math.round(variablesDoc.boostPerSecond.innerHTML * 10) / 10;
   variablesDoc.maxMatter.innerHTML = profileStats.maxMatter;
+  variablesDoc.upgrade1Cost.innerHTML = variables.upgrade1Cost;
+  variablesDoc.upgrade1Multiplier.innerHTML = variables.upgrade1Multiplier;
 }
 
 function addMatter(value) {
@@ -127,6 +135,10 @@ function addMatter(value) {
 
 function tenths(value) {
   return Math.round(value * 10) / 10;
+}
+
+function hundreths(value) {
+  return value.toFixed(2);
 }
 
 function reset() {
