@@ -15,9 +15,9 @@ const variables = {
   acceleratorLevel: 1,
   generatorCost: 15,
   generatorCurrent: 0,
-  boosterCost: 400,
+  boosterCost: 600,
   boosterCurrent: 0,
-  acceleratorCost: 1000,
+  acceleratorCost: 10000,
   acceleratorCurrent: 0,
   timerCurrent: 0,
   timerMax: 10,
@@ -27,6 +27,10 @@ const variables = {
 
 const profileStats = {
   maxMatter: 0,
+}
+
+const purchasedUpgrades = {
+  upgrade1: false,
 }
 
 const variablesDoc = {
@@ -51,6 +55,7 @@ const variablesDoc = {
   // Upgrades
   upgrade1Multiplier: document.querySelector("#maxMatterMultiplier"),
   upgrade1Cost: document.querySelector("#upgrade1Cost"),
+  upgrade1: document.querySelector('#upgrade1'),
 
   // Stats
   maxMatter: document.querySelector("#maxMatter"),
@@ -79,7 +84,7 @@ buttons.buyBooster.addEventListener("click", () => {
     variables.boosterLevel++;
     variables.boosterCurrent = variables.boosterCurrent - variables.boosterCost;
     variables.boosterCurrent = tenths(variables.boosterCurrent);
-    variables.boosterCost *= 2.3;
+    variables.boosterCost *= 2.1;
     variables.boosterCost = tenths(variables.boosterCost);
     variables.boostPerSecond = (variables.boosterLevel - 1) / 10;
   }
@@ -91,9 +96,23 @@ buttons.buyAccelerator.addEventListener("click", () => {
 })
 */
 
+buttons.buyUpgrade1.addEventListener("click", () => {
+  if ((variables.matter >= variables.upgrade1Cost) && purchasedUpgrades.upgrade1 == false) {
+    variables.matter = variables.matter - variables.upgrade1Cost;
+    variables.upgrade1Cost = tenths(variables.upgrade1Cost);
+    purchasedUpgrades.upgrade1 = true;
+    variables.upgrade1Cost = "purchased";
+    variablesDoc.upgrade1.classList.remove("upgradeBox");
+    variablesDoc.upgrade1.classList.add("purchased");
+  }
+})
+
 function updateData() {
   // Updates Values
   variables.matterPerSecond = variables.generatorLevel * (1 + variables.boostAccumulated);
+  if (purchasedUpgrades.upgrade1) {
+    variables.matterPerSecond *= variables.upgrade1Multiplier;
+  }
   variables.matterPerSecond = tenths(variables.matterPerSecond)
   addMatter(variables.matterPerSecond/10);
   variables.timerCurrent += 0.1;
