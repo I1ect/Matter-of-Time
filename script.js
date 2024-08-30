@@ -23,6 +23,7 @@ const variables = {
   timerMax: 10,
   upgrade1Cost: 50,
   upgrade1Multiplier: 0,
+  upgrade2Cost: 10,
 }
 
 const profileStats = {
@@ -56,6 +57,7 @@ const variablesDoc = {
   upgrade1Multiplier: document.querySelector("#maxMatterMultiplier"),
   upgrade1Cost: document.querySelector("#upgrade1Cost"),
   upgrade1: document.querySelector('#upgrade1'),
+  upgrade2Multiplier: document.querySelector('#resetTimer'),
 
   // Stats
   maxMatter: document.querySelector("#maxMatter"),
@@ -144,6 +146,7 @@ function updateData() {
   variablesDoc.maxMatter.innerHTML = profileStats.maxMatter;
   variablesDoc.upgrade1Cost.innerHTML = variables.upgrade1Cost;
   variablesDoc.upgrade1Multiplier.innerHTML = variables.upgrade1Multiplier;
+  variablesDoc.upgrade2Multiplier.innerHTML = variables.timerMax;
 }
 
 function addMatter(value) {

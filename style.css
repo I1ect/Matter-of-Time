@@ -18,12 +18,7 @@ html {
   transition-duration: 0.4s;
 }
 
-#buyGenerator:hover, #buyBooster:hover, #buyAccelerator:hover {
-  background-color: white;
-  color: black;
-}
-
-.upgradeBox:hover {
+#buyGenerator:hover, #buyBooster:hover, #buyAccelerator:hover, .upgradeBox:hover, .tabButton:hover {
   background-color: white;
   color: black;
 }
@@ -35,6 +30,7 @@ html {
   font-size: 16px;
   padding: 4px;
   margin: 8px;
+  transition-duration: 0.4s;
 }
 
 .purchased {
@@ -46,6 +42,17 @@ html {
   margin: 8px;
 }
 
-#upgradesList {
-  
+#tabList {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tabButton {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  width: 120px;
+  height: 40px;
+  transition-duration: 0.4s;
+  font-size: 16px;
 }

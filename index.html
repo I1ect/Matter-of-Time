@@ -16,40 +16,47 @@
   Matter Per Second: <span id="matterPerSecond">1</span> (+<span id ="boostPerSecond"> 
   0</span>/s) <br>
   Reset: <span id="timerCurrent">0</span> / <span id="timerMax">0</span>s <br>
+  <div id="tabList">
+    <button class="tabButton" id="generators"> Generators </button>
+    <button class="tabButton" id="stats"> Stats </button>
+    <button class="tabButton" id="achievements"> Achievements </button>
+  </div>
   <hr>
-  <div class="building" id="generator">
-    Matter Generator - Level <span id="generatorLevel">1</span>
-     <button id="buyGenerator">Buy</button>
-    <span id = generatorCurrent> 0 </span> / <span id="generatorCost"> 0 </span>
-  </div>
-
-  <div class="building" id="booster">
-    Matter Booster - Level <span id="boosterLevel">1</span>
-     <button id="buyBooster">Buy</button>
-    <span id = boosterCurrent> 0 </span> / <span id="boosterCost"> 0 </span>
-  </div>
-
-  <div class="building" id="accelerator">
-    Matter Accelerator - Level <span id="acceleratorLevel">1</span>
-     <button id="buyAccelerator">Buy</button>
-    <span id = acceleratorCurrent> 0 </span> / <span id="acceleratorCost"> 0 </span>
-  </div>
-  
-  <br> <hr>
-  Upgrades:
-  <div id="upgradesList">
-<div class="upgradeBox" id="upgrade1">
-  Max Matter Increases Matter Per Second <br> <br>
-  Current: <span id="maxMatterMultiplier">0</span>x <br>
-  Cost: <span id="upgrade1Cost">0</span>
-</div>
-
-  <div class="upgradeBox" id="upgrade2">
-    Increase Reset Timer <br> <br>
-    Current: <span id="resetTimerMultiplier">0</span>s <br>
-    Cost: <span id="upgrade2Cost"
-  </div>
+  <div id="generatorsPage">
+    <div class="building" id="generator">
+      Matter Generator - Level <span id="generatorLevel">1</span>
+       <button id="buyGenerator">Buy</button>
+      <span id = generatorCurrent> 0 </span> / <span id="generatorCost"> 0 </span>
     </div>
+  
+    <div class="building" id="booster">
+      Matter Booster - Level <span id="boosterLevel">1</span>
+       <button id="buyBooster">Buy</button>
+      <span id = boosterCurrent> 0 </span> / <span id="boosterCost"> 0 </span>
+    </div>
+  
+    <div class="building" id="accelerator">
+      Matter Accelerator - Level <span id="acceleratorLevel">1</span>
+       <button id="buyAccelerator">Buy</button>
+      <span id = acceleratorCurrent> 0 </span> / <span id="acceleratorCost"> 0 </span>
+    </div>
+    
+    <br> <hr>
+    Upgrades:
+    <div id="upgradesList">
+    <div class="upgradeBox" id="upgrade1">
+    Max Matter Increases Matter Per Second <br> <br>
+    Current: <span id="maxMatterMultiplier">0</span>x <br>
+    Cost: <span id="upgrade1Cost">0</span>
+    </div>
+  
+    <div class="upgradeBox" id="upgrade2">
+      Increase Reset Timer <br> <br>
+      Current: <span id="resetTimer">0</span>s <br>
+      Cost: <span id="upgrade2Cost"> 0 </span>
+    </div>
+      </div>
+  </div>
   <br> <hr>
   Stats:
   Max Matter: <span id="maxMatter"> 0 </span>
