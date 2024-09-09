@@ -45,6 +45,7 @@ html {
 #tabList {
   display: flex;
   justify-content: space-around;
+  min-width: 500px;
 }
 
 .tabButton {

@@ -15,13 +15,14 @@
   Matter: <span id="matter">1</span> <br>
   Matter Per Second: <span id="matterPerSecond">1</span> (+<span id ="boostPerSecond"> 
   0</span>/s) <br>
-  Reset: <span id="timerCurrent">0</span> / <span id="timerMax">0</span>s <br>
+  Reset: <span id="timerCurrent">0</span> / <span id="timerMax">0</span>s <br> <br>
   <div id="tabList">
-    <button class="tabButton" id="generators"> Generators </button>
-    <button class="tabButton" id="stats"> Stats </button>
-    <button class="tabButton" id="achievements"> Achievements </button>
+    <button class="tabButton" id="generatorsSwap"> Generators </button>
+    <button class="tabButton" id="statsSwap"> Stats </button>
+    <button class="tabButton" id="achievementsSwap"> Achievements </button>
   </div>
   <hr>
+  
   <div id="generatorsPage">
     <div class="building" id="generator">
       Matter Generator - Level <span id="generatorLevel">1</span>
@@ -57,9 +58,15 @@
     </div>
       </div>
   </div>
-  <br> <hr>
+
+  <div id="statsPage">
   Stats:
   Max Matter: <span id="maxMatter"> 0 </span>
+  </div>
+
+  <div id="achievementsPage">
+
+  </div>
   
   <script src="script.js"></script>
 </body>

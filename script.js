@@ -3,6 +3,10 @@ const buttons = {
   buyBooster: document.querySelector("#buyBooster"),
   buyAccelerator: document.querySelector("#buyAccelerator"),
   buyUpgrade1: document.querySelector("#upgrade1"),
+  buyUpgrade2: document.querySelector("#upgrade2"),
+  switchGenerators: document.querySelector("#generatorsSwap"),
+  switchStats: document.querySelector("#statsSwap"),
+  switchAchievements: document.querySelector("#achievementsSwap"),
 }
 
 const variables = {
@@ -24,6 +28,7 @@ const variables = {
   upgrade1Cost: 50,
   upgrade1Multiplier: 0,
   upgrade2Cost: 10,
+  currentPage: 1,
 }
 
 const profileStats = {
@@ -32,6 +37,7 @@ const profileStats = {
 
 const purchasedUpgrades = {
   upgrade1: false,
+  upgrade2: false,
 }
 
 const variablesDoc = {
@@ -58,10 +64,26 @@ const variablesDoc = {
   upgrade1Cost: document.querySelector("#upgrade1Cost"),
   upgrade1: document.querySelector('#upgrade1'),
   upgrade2Multiplier: document.querySelector('#resetTimer'),
+  upgrade2Cost: document.querySelector("#upgrade2Cost"),
 
   // Stats
   maxMatter: document.querySelector("#maxMatter"),
 }
+
+buttons.switchGenerators.addEventListener("click", () => {
+  variables.currentPage = 1;
+  updatePage();
+})
+
+buttons.switchStats.addEventListener("click", () => {
+  variables.currentPage = 2;
+  updatePage();
+})
+
+buttons.switchAchievements.addEventListener("click", () => {
+  variables.currentPage = 3;
+  updatePage();
+})
 
 buttons.buyGenerator.addEventListener("click", () => {
   variables.generatorCurrent += variables.matter;
@@ -108,6 +130,10 @@ buttons.buyUpgrade1.addEventListener("click", () => {
     variablesDoc.upgrade1.classList.add("purchased");
   }
 })
+
+buttons.buyUpgrade2.addEventListener("click"), () => {
+  if (variables.matter >= variables.upgrade2Cost)
+}
 
 function updateData() {
   // Updates Values
@@ -167,6 +193,24 @@ function reset() {
   variables.matter = 0;
   variables.boostAccumulated = 0;
   variables.timerCurrent = 0;
+}
+
+function updatePage() {
+  if (variables.currentPage == 1) {
+    document.querySelector("#generatorsPage").style.display = "block";
+    document.querySelector("#statsPage").style.display = "none";
+    document.querySelector("#achievementsPage").style.display = "none";
+  }
+  else if (variables.currentPage == 2) {
+    document.querySelector("#generatorsPage").style.display = "none";
+    document.querySelector("#statsPage").style.display = "block";
+    document.querySelector("#achievementsPage").style.display = "none";
+  }
+  else {
+    document.querySelector("#generatorsPage").style.display = "none";
+    document.querySelector("#statsPage").style.display = "none";
+    document.querySelector("#achievementsPage").style.display = "block";
+  }
 }
 
 setInterval(updateData, 100);
