@@ -1,13 +1,5 @@
-const buttons = {
-  buyGenerator: document.querySelector("#buyGenerator"),
-  buyBooster: document.querySelector("#buyBooster"),
-  buyAccelerator: document.querySelector("#buyAccelerator"),
-  buyUpgrade1: document.querySelector("#upgrade1"),
-  buyUpgrade2: document.querySelector("#upgrade2"),
-  switchGenerators: document.querySelector("#generatorsSwap"),
-  switchStats: document.querySelector("#statsSwap"),
-  switchAchievements: document.querySelector("#achievementsSwap"),
-}
+import {variablesDoc} from "./docs.js";
+import {buttons} from "./docs.js"
 
 const variables = {
   matter: 0,
@@ -38,36 +30,6 @@ const profileStats = {
 const purchasedUpgrades = {
   upgrade1: false,
   upgrade2: false,
-}
-
-const variablesDoc = {
-  // Currency
-  matter: document.querySelector("#matter"),
-  matterPerSecond: document.querySelector("#matterPerSecond"),
-  
-  // Generators
-  generatorLevel: document.querySelector("#generatorLevel"),
-  boosterLevel: document.querySelector("#boosterLevel"),
-  acceleratorLevel: document.querySelector("#acceleratorLevel"),
-  generatorCurrent: document.querySelector("#generatorCurrent"),
-  boosterCurrent: document.querySelector("#boosterCurrent"),
-  acceleratorCurrent: document.querySelector("#acceleratorCurrent"),
-  generatorCost: document.querySelector("#generatorCost"),
-  boosterCost: document.querySelector("#boosterCost"),
-  acceleratorCost: document.querySelector("#acceleratorCost"),
-  timerCurrent: document.querySelector('#timerCurrent'),
-  timerMax: document.querySelector('#timerMax'),
-  boostPerSecond: document.querySelector('#boostPerSecond'),
-
-  // Upgrades
-  upgrade1Multiplier: document.querySelector("#maxMatterMultiplier"),
-  upgrade1Cost: document.querySelector("#upgrade1Cost"),
-  upgrade1: document.querySelector('#upgrade1'),
-  upgrade2Multiplier: document.querySelector('#resetTimer'),
-  upgrade2Cost: document.querySelector("#upgrade2Cost"),
-
-  // Stats
-  maxMatter: document.querySelector("#maxMatter"),
 }
 
 buttons.switchGenerators.addEventListener("click", () => {
@@ -131,9 +93,11 @@ buttons.buyUpgrade1.addEventListener("click", () => {
   }
 })
 
-buttons.buyUpgrade2.addEventListener("click"), () => {
-  if (variables.matter >= variables.upgrade2Cost)
-}
+buttons.buyUpgrade2.addEventListener("click", () => {
+  if ((variables.matter >= variables.upgrade2Cost) && purchasedUpgrades.upgrade2 == false) {
+    variables.matter = variables.matter - variables.upgrade2Cost; 
+  }
+})
 
 function updateData() {
   // Updates Values
@@ -167,7 +131,7 @@ function updateData() {
   variablesDoc.matterPerSecond.innerHTML = variables.matterPerSecond;
   variablesDoc.timerCurrent.innerHTML = variables.timerCurrent;
   variablesDoc.timerMax.innerHTML = variables.timerMax;
-  variablesDoc.boostPerSecond.innerHTML = (variables.boostPerSecond *     variables.matterPerSecond);
+  variablesDoc.boostPerSecond.innerHTML = (variables.boostPerSecond * variables.matterPerSecond);
   variablesDoc.boostPerSecond.innerHTML = Math.round(variablesDoc.boostPerSecond.innerHTML * 10) / 10;
   variablesDoc.maxMatter.innerHTML = profileStats.maxMatter;
   variablesDoc.upgrade1Cost.innerHTML = variables.upgrade1Cost;
