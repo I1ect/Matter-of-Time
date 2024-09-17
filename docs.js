@@ -23,7 +23,7 @@ export const variablesDoc = {
   upgrade1Multiplier: document.querySelector("#maxMatterMultiplier"),
   upgrade1Cost: document.querySelector("#upgrade1Cost"),
   upgrade1: document.querySelector('#upgrade1'),
-  upgrade2Multiplier: document.querySelector('#resetTimer'),
+  upgrade2Multiplier: document.querySelector('#crunchTimer'),
   upgrade2Cost: document.querySelector("#upgrade2Cost"),
 
   // Stats

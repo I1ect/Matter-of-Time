@@ -19,7 +19,7 @@ const variables = {
   timerMax: 10,
   upgrade1Cost: 50,
   upgrade1Multiplier: 0,
-  upgrade2Cost: 10,
+  upgrade2Cost: 100,
   currentPage: 1,
 }
 
@@ -85,7 +85,6 @@ buttons.buyAccelerator.addEventListener("click", () => {
 buttons.buyUpgrade1.addEventListener("click", () => {
   if ((variables.matter >= variables.upgrade1Cost) && purchasedUpgrades.upgrade1 == false) {
     variables.matter = variables.matter - variables.upgrade1Cost;
-    variables.upgrade1Cost = tenths(variables.upgrade1Cost);
     purchasedUpgrades.upgrade1 = true;
     variables.upgrade1Cost = "purchased";
     variablesDoc.upgrade1.classList.remove("upgradeBox");
@@ -96,6 +95,8 @@ buttons.buyUpgrade1.addEventListener("click", () => {
 buttons.buyUpgrade2.addEventListener("click", () => {
   if ((variables.matter >= variables.upgrade2Cost) && purchasedUpgrades.upgrade2 == false) {
     variables.matter = variables.matter - variables.upgrade2Cost; 
+    variables.upgrade2Cost *= 10;
+    variables.timerMax += 2.5
   }
 })
 
@@ -136,6 +137,7 @@ function updateData() {
   variablesDoc.maxMatter.innerHTML = profileStats.maxMatter;
   variablesDoc.upgrade1Cost.innerHTML = variables.upgrade1Cost;
   variablesDoc.upgrade1Multiplier.innerHTML = variables.upgrade1Multiplier;
+  variablesDoc.upgrade2Cost.innerHTML = variables.upgrade2Cost;
   variablesDoc.upgrade2Multiplier.innerHTML = variables.timerMax;
 }
 
@@ -170,10 +172,14 @@ function updatePage() {
     document.querySelector("#statsPage").style.display = "block";
     document.querySelector("#achievementsPage").style.display = "none";
   }
-  else {
+  else if (variables.currentPage == 3 {
     document.querySelector("#generatorsPage").style.display = "none";
     document.querySelector("#statsPage").style.display = "none";
     document.querySelector("#achievementsPage").style.display = "block";
+  }
+
+  else {
+    
   }
 }
 
