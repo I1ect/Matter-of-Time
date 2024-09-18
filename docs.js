@@ -32,12 +32,13 @@ export const variablesDoc = {
 
   // Selects all the buttons within the game
 export const buttons = {
-    buyGenerator: document.querySelector("#buyGenerator"),
-    buyBooster: document.querySelector("#buyBooster"),
-    buyAccelerator: document.querySelector("#buyAccelerator"),
-    buyUpgrade1: document.querySelector("#upgrade1"),
-    buyUpgrade2: document.querySelector("#upgrade2"),
-    switchGenerators: document.querySelector("#generatorsSwap"),
-    switchStats: document.querySelector("#statsSwap"),
-    switchAchievements: document.querySelector("#achievementsSwap"),
-  }
+  buyGenerator: document.querySelector("#buyGenerator"),
+  buyBooster: document.querySelector("#buyBooster"),
+  buyAccelerator: document.querySelector("#buyAccelerator"),
+  buyUpgrade1: document.querySelector("#upgrade1"),
+  buyUpgrade2: document.querySelector("#upgrade2"),
+  switchGenerators: document.querySelector("#generatorsSwap"),
+  switchStats: document.querySelector("#statsSwap"),
+  switchAchievements: document.querySelector("#achievementsSwap"),
+  switchCheats: document.querySelector('#cheatsSwap'),
+}

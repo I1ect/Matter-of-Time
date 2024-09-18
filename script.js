@@ -34,17 +34,18 @@ const purchasedUpgrades = {
 
 buttons.switchGenerators.addEventListener("click", () => {
   variables.currentPage = 1;
-  updatePage();
 })
 
 buttons.switchStats.addEventListener("click", () => {
   variables.currentPage = 2;
-  updatePage();
 })
 
 buttons.switchAchievements.addEventListener("click", () => {
   variables.currentPage = 3;
-  updatePage();
+})
+
+buttons.switchCheats.addEventListener("click", () => {
+  variables.currentPage = 4;
 })
 
 buttons.buyGenerator.addEventListener("click", () => {
@@ -139,6 +140,7 @@ function updateData() {
   variablesDoc.upgrade1Multiplier.innerHTML = variables.upgrade1Multiplier;
   variablesDoc.upgrade2Cost.innerHTML = variables.upgrade2Cost;
   variablesDoc.upgrade2Multiplier.innerHTML = variables.timerMax;
+  updatePage();
 }
 
 function addMatter(value) {
@@ -166,20 +168,25 @@ function updatePage() {
     document.querySelector("#generatorsPage").style.display = "block";
     document.querySelector("#statsPage").style.display = "none";
     document.querySelector("#achievementsPage").style.display = "none";
+    document.querySelector("#cheatsPage").style.display = "none";
   }
   else if (variables.currentPage == 2) {
     document.querySelector("#generatorsPage").style.display = "none";
     document.querySelector("#statsPage").style.display = "block";
     document.querySelector("#achievementsPage").style.display = "none";
+    document.querySelector("#cheatsPage").style.display = "none";
   }
-  else if (variables.currentPage == 3 {
+  else if (variables.currentPage == 3) {
     document.querySelector("#generatorsPage").style.display = "none";
     document.querySelector("#statsPage").style.display = "none";
     document.querySelector("#achievementsPage").style.display = "block";
+    document.querySelector("#cheatsPage").style.display = "none";
   }
-
   else {
-    
+    document.querySelector("#generatorsPage").style.display = "none";
+    document.querySelector("#statsPage").style.display = "none";
+    document.querySelector("#achievementsPage").style.display = "none";
+    document.querySelector("#cheatsPage").style.display = "block";
   }
 }
 
